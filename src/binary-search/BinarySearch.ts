@@ -1,28 +1,32 @@
+/** Array must be sorted */
 export default function binarySearch(
   haystack: number[],
   needle: number
 ): boolean {
-  haystack = haystack.sort((a, b) => a - b); // Array must be sorted
   let low = 0;
   let high = haystack.length;
 
-  while (low < high) {
-    const m = Math.floor(low + (high - low) / 2);
-    const value = haystack[m];
+  do {
+    const middle = Math.floor(low + (high - low) / 2); // offset from low + middle
+    const value = haystack[middle];
 
-    if (needle === value) {
+    if (value === needle) {
       return true;
     } else if (value > needle) {
-      high = m;
-    } else {
-      low = value + 1;
+      high = middle;
+    } else { // value < needle
+      low = middle + 1;
     }
-  }
+  } while (low < high);
 
   return false;
 }
 
-console.log("binary search");
-console.log(binarySearch([12, 3, 4, 5, 6], 99));
-console.log(binarySearch([12, 3, 4, 5, 6, 23, 9, 2], 2));
-console.log(binarySearch([10, 20, 30, 40, 50, 60], 30));
+const arr1 = [2, 3, 4, 5, 6, 12];
+console.log(binarySearch(arr1, 99));
+
+const arr2 = [2, 4, 6, 9, 13, 23];
+console.log(binarySearch(arr2, 2));
+
+const arr3 = [3, 6, 9, 12, 15, 30];
+console.log(binarySearch(arr3, 30));
