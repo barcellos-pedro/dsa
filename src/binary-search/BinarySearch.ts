@@ -1,4 +1,8 @@
-/** Array must be sorted */
+/**
+ * Big O (time complexity) = O(Log N)
+ *
+ * * Array must be sorted
+ */
 export default function binarySearch(
   haystack: number[],
   needle: number
@@ -14,7 +18,8 @@ export default function binarySearch(
       return true;
     } else if (value > needle) {
       high = middle;
-    } else { // value < needle
+    } else {
+      // value < needle
       low = middle + 1;
     }
   } while (low < high);

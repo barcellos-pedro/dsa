@@ -1,3 +1,6 @@
+/**
+ * Big O (time complexity) = O(N)
+ */
 export default function linearSearch(
   haystack: number[],
   needle: number
